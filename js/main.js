@@ -6,7 +6,7 @@ $(".nav li").on("click", function(event){
     $(this).toggleClass("active");
 
     var tabOption = $(this).data("tab");
-    console.log("tabOption: ", tabOption);
+    //console.log("tabOption: ", tabOption);
   
     $("#options-display").empty();
 
@@ -70,6 +70,25 @@ $(".nav li").on("click", function(event){
                 $("#options-display").html(summaryList);
             break;
     };
+});
+
+// STEP 4, 5
+$("#options-display").on("click", "div, .option", function(event) {
+    event.preventDefault();
+    var option = $(this).data("panel");
+    console.log("option: ", option);
+
+
+    carSelection[option].choice = $(this).data("option");
+    console.log("carSelection[option].choice: ", carSelection[option].choice);
+
+    carSelection[option].price = $(this).data("price");  
+
+    
+    var images = $("img.col-md-12.vehicle-display");
+    var image = images[0]; 
+    console.log("image: ", image);
+    image.src = "assets/" + carSelection[option].choice + ".jpg";
 });
 
 // STEP 2
