@@ -83,18 +83,33 @@ $("#options-display").on("click", "div, .option", function(event) {
     //console.log("carSelection[option].choice: ", carSelection[option].choice);
 
     carSelection[option].price = $(this).data("price");  
+    //console.log("carSelection[option].price: ", carSelection[option].price);
+
 
     if (option === "vehicle") {
         var images = $("img.col-md-12.vehicle-display");
         var image = images[0]; 
         //console.log("image: ", image);
         image.src = "assets/" + carSelection[option].choice + ".jpg";
+
+        var cost = carSelection.color.price + carSelection.vehicle.price + carSelection.package.price;
+        //console.log("cost: ", cost);
+        $(".cost-display").text("$" + cost);
     }
     else if (option === "color"){
         var images = $("img.col-md-12.vehicle-display");
         var image = images[0]; 
         //console.log("image: ", image);
         image.src = "assets/" + carSelection.vehicle.choice + "-" + carSelection[option].choice + ".jpg";
+
+        var cost = carSelection.color.price + carSelection.vehicle.price + carSelection.package.price;
+        //console.log("cost: ", cost);
+        $(".cost-display").text("$" + cost);
+    }
+    else if (option === "package") {
+        var cost = carSelection.color.price + carSelection.vehicle.price + carSelection.package.price;
+        //console.log("cost: ", cost);
+        $(".cost-display").text("$" + cost);
     }
     
 });
