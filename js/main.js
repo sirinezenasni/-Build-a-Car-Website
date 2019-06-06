@@ -76,19 +76,27 @@ $(".nav li").on("click", function(event){
 $("#options-display").on("click", "div, .option", function(event) {
     event.preventDefault();
     var option = $(this).data("panel");
-    console.log("option: ", option);
+    //console.log("option: ", option);
 
 
     carSelection[option].choice = $(this).data("option");
-    console.log("carSelection[option].choice: ", carSelection[option].choice);
+    //console.log("carSelection[option].choice: ", carSelection[option].choice);
 
     carSelection[option].price = $(this).data("price");  
 
+    if (option === "vehicle") {
+        var images = $("img.col-md-12.vehicle-display");
+        var image = images[0]; 
+        //console.log("image: ", image);
+        image.src = "assets/" + carSelection[option].choice + ".jpg";
+    }
+    else if (option === "color"){
+        var images = $("img.col-md-12.vehicle-display");
+        var image = images[0]; 
+        //console.log("image: ", image);
+        image.src = "assets/" + carSelection.vehicle.choice + "-" + carSelection[option].choice + ".jpg";
+    }
     
-    var images = $("img.col-md-12.vehicle-display");
-    var image = images[0]; 
-    console.log("image: ", image);
-    image.src = "assets/" + carSelection[option].choice + ".jpg";
 });
 
 // STEP 2
